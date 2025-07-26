@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Todo;
 
 use Illuminate\Http\Request;
+use Symfony\Contracts\Service\Attribute\Required;
 
 class TodosController extends Controller
 {
@@ -22,6 +23,12 @@ class TodosController extends Controller
     }
 
     public function store() {
+
+        $this->validate(request(), [
+            'name' => 'required',
+            'description' => 'required'
+        ]);
+
         $data = request()->all();
 
         $todo = new Todo();
