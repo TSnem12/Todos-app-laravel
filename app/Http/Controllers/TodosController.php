@@ -29,7 +29,6 @@ class TodosController extends Controller
             'description' => 'required'
         ]);
 
-
         $data = request()->all();
 
         $todo = new Todo();
